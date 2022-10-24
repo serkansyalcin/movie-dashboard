@@ -10,15 +10,26 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Work explained
 ```
-npm run build
+Made a Vue3 project with router;
+Created 3 pages HomeView.vue, MovieDetailsView.vue, Favorites.vue;
+Linked all the pages using [Vue Router](https://router.vuejs.org/guide/);
+Imported bootstrap;
+Started with HomeView.vue;
+Added search input;
+Added bootstrap component Card;
+Fetched the api data using axios to get all movies;
+Added filter for the search input;
+Moved to MovieDetailsView.vue;
+Split the page using bootstrap classes row,col;
+Put the poster in the left div and the details in the right div;
+Fetched the api data using axios to get movie details
+Implemented Vuex; ([Follow documentation](https://vuex.vuejs.org/guide/))
+Moved to Favorites.vue
+Added bootstrap component Card;
+Fetched the api data using axios;
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
