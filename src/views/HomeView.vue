@@ -24,12 +24,11 @@
 </template>
 
 <script>
-import axios from "axios";
+import store from "@/store";
 export default {
   name: "HomeView",
   data() {
     return {
-      movies: [],
       search:"",
     };
   },
@@ -39,23 +38,12 @@ export default {
         return movie.title.toLowerCase().includes(this.search.toLowerCase());
       });
     },
+    movies(){
+      return store.state.movies.all;
+    }
   },
   created() {
-    this.getData();
-  },
-  methods: {
-    async getData() {
-      await axios
-        .get(
-          "https://api.themoviedb.org/3/movie/popular?api_key=e776076efffd901247e4b0a276a5c9c0"
-        )
-        .then((response) => {
-          this.movies = response.data.results;
-          console.log(this.movies);
-        })
-        .catch((error) => console.log(error));
-        
-    },
+    store.dispatch("movies/getMovies")
   },
 };
 </script>
