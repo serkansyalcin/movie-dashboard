@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="favorites">
     <div class="row" style="margin:2%">
       <div class="card" style="width: 18rem;margin: 2% 2%;" v-for="m in favorites" :key="m.id">
         <router-link :to="`/details/${m.id}`">
@@ -27,10 +27,8 @@ import store from "@/store";
 export default {
   name: "FavoritesView",
   computed:{
-    favorites() {
-      return this.movies.filter((movie) => {
-        return movie.vote_average>7;
-      });
+    favorites() {     
+      return store.state.movies.favs
     },
     movies(){
       return store.state.movies.all;

@@ -1,8 +1,9 @@
-import axios from 'axios'
+import axios from "axios";
 // initial state
 const state = () => ({
   all: [],
-  movie:[],
+  movie: [],
+  favs: [],
 });
 
 // getters
@@ -16,13 +17,14 @@ const actions = {
     );
     commit("setMovies", movies.data.results);
   },
-  async getMovie({ commit },id) {
-    const movie =  await axios
-    .get(
+  async getMovie({ commit }, id) {
+    const movie = await axios.get(
       `https://api.themoviedb.org/3/movie/${id}?api_key=e776076efffd901247e4b0a276a5c9c0`
-    )
-    console.log(movie.data)
+    );
     commit("setMovie", movie.data);
+  },
+  getFav({ commit }, favs) {
+    commit("setFav", favs);
   },
 };
 
@@ -33,6 +35,9 @@ const mutations = {
   },
   setMovie(state, movie) {
     state.movie = movie;
+  },
+  setFav(state, favs) {
+    state.favs.push(favs);
   },
 };
 
